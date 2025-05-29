@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Menú Principal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="menu">
+      <li><a href="/inicio">Inicio</a></li>
+      <li><a href="/clientes">Clientes</a></li>
+      <li><a href="/expedientes">Expedientes</a></li>
+      <li><a href="/contactos">Contactos</a></li>
+      <li><a href="/logout">Cerrar sesión</a></li>
+    </ul>
+  </nav>
+
+  <div class="contenido">
+    <h1>Bienvenido a Servicio Legal, {{ username }}</h1>
+    <p>Selecciona una opción del menú superior para continuar.</p>
+  </div>
+</body>
+</html>
+

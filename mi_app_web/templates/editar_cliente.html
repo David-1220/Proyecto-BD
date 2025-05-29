@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Editar Cliente</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    .contenido {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    form {
+      width: 400px;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px; /* Espacio entre filas */
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3949ab;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2c387e;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="menu">
+      <li><a href="/inicio">Inicio</a></li>
+      <li><a href="/clientes">Clientes</a></li>
+      <li><a href="/expedientes">Expedientes</a></li>
+      <li><a href="/contactos">Contactos</a></li>
+      <li><a href="/logout">Cerrar sesión</a></li>
+    </ul>
+  </nav>
+
+  <div class="contenido">
+    <form method="post">
+      <div>
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" type="text" name="nombre" value="{{ cliente[1] }}" required>
+      </div>
+
+      <div>
+        <label for="correo">Correo:</label>
+        <input id="correo" type="email" name="correo" value="{{ cliente[2] }}" required>
+      </div>
+
+      <div>
+        <label for="rfc">RFC:</label>
+        <input id="rfc" type="text" name="rfc" value="{{ cliente[3] }}" required>
+      </div>
+
+      <div>
+        <label for="telefono">Teléfono:</label>
+        <input id="telefono" type="text" name="telefono" value="{{ telefono }}">
+      </div>
+
+      <button type="submit">Guardar cambios</button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Inicio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    .contenido {
+      padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .aviso {
+      background-color: #f1f1f1;
+      border-left: 6px solid #3949ab;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .aviso h2 {
+      font-size: 28px;
+      color: #3949ab;
+      margin-bottom: 10px;
+    }
+
+    .aviso p {
+      font-size: 18px;
+      color: #333;
+      margin: 0;
+    }
+
+    .imagen-grande {
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin: 0 auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="menu">
+      <li><a href="/inicio" class="{% if active == 'inicio' %}active{% endif %}">Inicio</a></li>
+      <li><a href="/clientes" class="{% if active == 'clientes' %}active{% endif %}">Clientes</a></li>
+      <li><a href="/expedientes" class="{% if active == 'expedientes' %}active{% endif %}">Expedientes</a></li>
+      <li><a href="/contactos" class="{% if active == 'contactos' %}active{% endif %}">Contactos</a></li>
+      <li><a href="/logout">Cerrar sesión</a></li>
+    </ul>
+  </nav>
+
+  <div class="contenido">
+    <div class="aviso">
+      <h2>Recuerda asistir al festejo por el Día del Abogado este 12 de julio</h2>
+      <p>Evento en la sala de juntas del despacho, el día 12 de julio del presente año a las 6:00 PM</p>
+    </div>
+
+    <img src="{{ url_for('static', filename='justicia.jpeg') }}" alt="Festejo Día del Abogado" class="imagen-grande" />
+  </div>
+</body>
+</html>

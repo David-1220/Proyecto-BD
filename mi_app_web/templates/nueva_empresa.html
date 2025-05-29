@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Agregar Empresa</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    .contenido {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    form {
+      width: 400px;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #3949ab;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2c387e;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <ul class="menu">
+      <li><a href="/inicio">Inicio</a></li>
+      <li><a href="/clientes">Clientes</a></li>
+      <li><a href="/expedientes">Expedientes</a></li>
+      <li><a href="/contactos">Contactos</a></li>
+      <li><a href="/logout">Cerrar sesión</a></li>
+    </ul>
+  </nav>
+
+  <div class="contenido">
+    <form method="post">
+      <h2 style="text-align: center; margin-bottom: 20px;">Agregar Nueva Empresa</h2>
+
+      <label for="nombre_empresa">Nombre de la Empresa:</label>
+      <input type="text" name="nombre_empresa" id="nombre_empresa" required>
+
+      <label for="rfc_empresa">RFC:</label>
+      <input type="text" name="rfc_empresa" id="rfc_empresa" required>
+
+      <label for="direccion_empresa">Dirección:</label>
+      <input type="text" name="direccion_empresa" id="direccion_empresa" required>
+
+      <button type="submit">Agregar Empresa</button>
+    </form>
+  </div>
+</body>
+</html>

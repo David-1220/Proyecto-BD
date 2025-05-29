@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Editar Expediente</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    .formulario-expediente {
+      max-width: 500px;
+      margin: 40px auto;
+      background: #f9f9f9;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .formulario-expediente h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-weight: bold;
+    }
+
+    .formulario-expediente form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .formulario-expediente input,
+    .formulario-expediente select {
+      padding: 10px 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border 0.3s;
+    }
+
+    .formulario-expediente input:focus,
+    .formulario-expediente select:focus {
+      outline: none;
+      border-color: #4a90e2;
+    }
+
+    .boton-expediente {
+      width: 100%;
+      padding: 12px;
+      background-color: #3949ab;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .boton-expediente:hover {
+      background-color: #26378c;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Menú de navegación -->
+  <nav class="navbar">
+    <ul class="menu">
+      <li><a href="/inicio" class="{% if active == 'inicio' %}active{% endif %}">Inicio</a></li>
+      <li><a href="/clientes" class="{% if active == 'clientes' %}active{% endif %}">Clientes</a></li>
+      <li><a href="/expedientes" class="{% if active == 'expedientes' %}active{% endif %}">Expedientes</a></li>
+      <li><a href="/contactos" class="{% if active == 'contactos' %}active{% endif %}">Contactos</a></li>
+      <li><a href="/logout">Cerrar sesión</a></li>
+    </ul>
+  </nav>
+
+  <div class="formulario-expediente">
+    <h2>Editar expediente</h2>
+    <form method="POST">
+      <select name="id_cliente" required>
+        <option value="">Seleccione un cliente</option>
+        {% for cliente in clientes %}
+          <option value="{{ cliente[0] }}" {% if expediente.id_cliente == cliente[0] %}selected{% endif %}>{{ cliente[1] }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="id_empresa" required>
+        <option value="">Seleccione una empresa</option>
+        {% for empresa in empresas %}
+          <option value="{{ empresa[0] }}" {% if expediente.id_empresa == empresa[0] %}selected{% endif %}>{{ empresa[1] }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="id_abogado" required>
+        <option value="">Seleccione un abogado</option>
+        {% for abogado in abogados %}
+          <option value="{{ abogado[0] }}" {% if expediente.id_abogado == abogado[0] %}selected{% endif %}>{{ abogado[1] }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="id_etapa" required>
+        <option value="">Seleccione una etapa</option>
+        {% for etapa in etapas %}
+          <option value="{{ etapa[0] }}" {% if expediente.id_etapa == etapa[0] %}selected{% endif %}>{{ etapa[1] }}</option>
+        {% endfor %}
+      </select>
+
+      <select name="id_estado" required>
+        <option value="">Seleccione un estado</option>
+        {% for estado in estados %}
+          <option value="{{ estado[0] }}" {% if expediente.id_estado == estado[0] %}selected{% endif %}>{{ estado[1] }}</option>
+        {% endfor %}
+      </select>
+
+      <input type="text" name="numero_expediente" value="{{ expediente.numero_expediente }}" required placeholder="Número de expediente">
+      <input type="date" name="fecha_inicio" value="{{ expediente.fecha_inicio }}" required>
+
+      <button type="submit" class="boton-expediente">Guardar Cambios</button>
+    </form>
+  </div>
+
+</body>
+</html>
